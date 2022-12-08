@@ -67,5 +67,5 @@ steps:
     deployToSlotOrASE: true
     resourceGroupName: '$(resourceGroupName)'
     slotName: 'production'
-    package: '$(functionSolutionPath)/build'
+    package: '$(functionSolutionPath)/build/build.zip'
     deploymentMethod: 'auto'
