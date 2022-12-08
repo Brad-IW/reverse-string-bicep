@@ -4,6 +4,7 @@ trigger:
 name: Deploy Bicep files
 
 variables:
+  azureServiceConnection: 'azureServiceConnection'
   resourceGroupName: 'reversefunctionrg'
   location: 'australiasoutheast'
   templateFile: 'main.bicep'
