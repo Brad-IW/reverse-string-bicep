@@ -4,13 +4,10 @@ trigger:
 name: Deploy Bicep files
 
 variables:
-  vmImageName: 'ubuntu-latest'
-
   resourceGroupName: 'reversefunctionrg'
   location: 'australiasoutheast'
   templateFile: 'main.bicep'
-pool:
-  vmImage: $(vmImageName)
+pool: 'My Devices'
 
 steps:
 - task: AzureCLI@2
