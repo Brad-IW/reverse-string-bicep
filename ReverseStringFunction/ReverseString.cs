@@ -16,15 +16,16 @@ public static class ReverseString
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        var text = req.Query["text"];
-
+        var textQuery = req.Query["text"];
+        
         string responseText;
-        if (text.Count > 0 && string.IsNullOrWhiteSpace(text[0]))
+        if (textQuery.Count > 0 && !string.IsNullOrWhiteSpace(textQuery[0]))
         {
-            var chars = new char[text[0].Length];
+            var text = textQuery[0];
+            var chars = new char[text.Length];
             for (int i = 0; i < chars.Length; i++)
             {
-                chars[i] = text[0][chars.Length - i - 1];
+                chars[i] = text[chars.Length - i - 1];
             }
             responseText = new string(chars);
         }
