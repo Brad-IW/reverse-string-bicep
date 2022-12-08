@@ -41,7 +41,7 @@ steps:
     command: 'publish'
     arguments: '--configuration Release --output build'
     publishWebProjects: false
-    workingDirectory: '$(functionSolutionPath)/build'
+    workingDirectory: '$(functionSolutionPath)'
     zipAfterPublish: true
 
 # - task: AzureCLI@2
