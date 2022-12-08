@@ -18,5 +18,11 @@ steps:
     scriptLocation: inlineScript
     inlineScript: |
       az --version
+      $rgExists = az group exists --name $(resourceGroupName)
+      if ($rgExists)
+      {
+        az group delete --name $(resourceGroupName)
+      }
       az group create --name $(resourceGroupName) --location $(location)
       az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile)
+
