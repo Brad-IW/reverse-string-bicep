@@ -39,8 +39,10 @@ steps:
   displayName:  Publish function to folder.
   inputs:
     command: 'publish'
-    publishWebProjects: true
+    arguments: '--configuration Release --output build'
+    publishWebProjects: false
     workingDirectory: '$(functionSolutionPath)'
+    zipAfterPublish: true
 
 # - task: AzureCLI@2
 #   inputs:
@@ -65,5 +67,6 @@ steps:
     deployToSlotOrASE: true
     resourceGroupName: '$(resourceGroupName)'
     slotName: 'production'
-    package: '$(System.DefaultWorkingDirectory)/ReverseStringFunction/bin/Release/net6.0/publish/'
+    package: '$(System.DefaultWorkingDirectory)/build'
+    #package: '$(functionSolutionPath)/bin/Release/net6.0/publish/'
     deploymentMethod: 'auto'
