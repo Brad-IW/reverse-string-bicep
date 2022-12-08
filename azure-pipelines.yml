@@ -44,20 +44,20 @@ steps:
     workingDirectory: '$(functionSolutionPath)'
     zipAfterPublish: true
 
-# - task: AzureCLI@2
-#   inputs:
-#     azureSubscription: $(azureServiceConnection)
-#     scriptType: ps
-#     scriptLocation: inlineScript
-#     inlineScript: |
-#       az --version
-#       $rgExists = az group exists --name $(resourceGroupName)
-#       if ($rgExists)
-#       {
-#         az group delete --name $(resourceGroupName)
-#       }
-#       az group create --name $(resourceGroupName) --location $(location)
-#       az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile)
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: $(azureServiceConnection)
+    scriptType: ps
+    scriptLocation: inlineScript
+    inlineScript: |
+      az --version
+      $rgExists = az group exists --name $(resourceGroupName)
+      if ($rgExists)
+      {
+        az group delete --name $(resourceGroupName)
+      }
+      az group create --name $(resourceGroupName) --location $(location)
+      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile)
 
 - task: AzureFunctionApp@1
   inputs:
