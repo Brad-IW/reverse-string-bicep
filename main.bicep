@@ -1,5 +1,5 @@
 @description('The name of the function app that you wish to create.')
-param appName string = 'fnapp${uniqueString(resourceGroup().id)}'
+param appName string = 'reversestring'
 
 @description('Location for all resources.')
 param location string = resourceGroup().location
@@ -7,7 +7,7 @@ param location string = resourceGroup().location
 var functionAppName = appName
 var hostingPlanName = appName
 var applicationInsightsName = appName
-var storageAccountName = '${uniqueString(resourceGroup().id)}azfunctions'
+var storageAccountName = '${appName}azfunctions'
 var functionWorkerRuntime = 'dotnet'
 var storageAccountType = 'Standard_LRS'
 
