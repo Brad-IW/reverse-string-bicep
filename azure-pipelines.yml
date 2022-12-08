@@ -11,15 +11,37 @@ variables:
   resourceGroupName: 'reversefunctionrg'
   location: 'australiasoutheast'
   templateFile: 'main.bicep'
+  functionSolutionPath: '$(System.DefaultWorkingDirectory)/ReverseStringFunction'
 pool: 'My Devices'
 
 steps:
+# Build and prepare .NET
+- task: UseDotNet@2
+  displayName: 'Use .NET 6'
+  inputs:
+    packageType: 'sdk'
+    version: '6.x'
+
 - task: DotNetCoreCLI@2
+  displayName: 'Restore function NuGet packages'
+  inputs:
+    command: 'restore'
+    projects: '$(functionSolutionPath)'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build function'
+  inputs:
+    command: 'build'
+    projects: '$(functionSolutionPath)'
+
+- task: DotNetCoreCLI@2
+  displayName:  Publish function to folder.
   inputs:
     command: 'publish'
     publishWebProjects: true
-    workingDirectory: '$(System.DefaultWorkingDirectory)/ReverseStringFunction'
-  
+    workingDirectory: '$(functionSolutionPath)'
+
 # - task: AzureCLI@2
 #   inputs:
 #     azureSubscription: $(azureServiceConnection)
