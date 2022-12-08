@@ -39,7 +39,7 @@ steps:
   displayName:  Publish function to folder.
   inputs:
     command: 'publish'
-    arguments: '--configuration Release --output build'
+    arguments: '--configuration Release --output $(functionSolutionPath)/build'
     publishWebProjects: false
     workingDirectory: '$(functionSolutionPath)'
     zipAfterPublish: true
@@ -67,6 +67,5 @@ steps:
     deployToSlotOrASE: true
     resourceGroupName: '$(resourceGroupName)'
     slotName: 'production'
-    package: '$(System.DefaultWorkingDirectory)/build'
-    #package: '$(functionSolutionPath)/bin/Release/net6.0/publish/'
+    package: '$(functionSolutionPath)/build/build.zip'
     deploymentMethod: 'auto'
