@@ -1,8 +1,11 @@
-trigger: none
-#- main
+trigger: 
+  - main
 
 name: Deploy Bicep files
 parameters:
+  - name: appName
+    type: string
+    default: reversestring
   - name: azureServiceConnection
     type: string
     default: azureServiceConnection
@@ -12,13 +15,13 @@ parameters:
   - name: location
     type: string
     default: australiasoutheast
-  - name: appName
+  - name: pool
     type: string
-    default: reversestring
+    default: Default
 variables:
   templateFile: 'main.bicep'
   functionSolutionPath: '$(System.DefaultWorkingDirectory)/ReverseStringFunction'
-pool: 'My Devices'
+pool: '${{ parameters.pool }}'
 steps:
 # Build and prepare .NET
 - task: UseDotNet@2
