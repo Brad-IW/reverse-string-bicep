@@ -8,7 +8,7 @@ parameters:
     default: reversestring
   - name: azureServiceConnection
     type: string
-    default: azureServiceConnection
+    default: arm
   - name: resourceGroupName
     type: string
     default: reversefunctionrg
