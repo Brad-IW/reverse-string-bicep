@@ -1,15 +1,14 @@
-
-
-
-trigger:
-- main
+trigger: none
+#- main
 
 name: Deploy Bicep files
 
 variables:
+  # Config
   azureServiceConnection: 'azureServiceConnection'
   resourceGroupName: 'reversefunctionrg'
   location: 'australiasoutheast'
+  # Variables
   templateFile: 'main.bicep'
   functionSolutionPath: '$(System.DefaultWorkingDirectory)/ReverseStringFunction'
 pool: 'My Devices'
@@ -44,6 +43,7 @@ steps:
     workingDirectory: '$(functionSolutionPath)'
     zipAfterPublish: true
 
+# Create Azure resources
 - task: AzureCLI@2
   inputs:
     azureSubscription: $(azureServiceConnection)
@@ -59,11 +59,12 @@ steps:
       az group create --name $(resourceGroupName) --location $(location)
       az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile)
 
+# Upload function
 - task: AzureFunctionApp@1
   inputs:
-    azureSubscription: 'azureServiceConnection'
+    azureSubscription: '$(azureServiceConnection)'
     appType: 'functionApp'
-    appName: 'reversestring'
+    appName: '$(appname)'
     deployToSlotOrASE: true
     resourceGroupName: '$(resourceGroupName)'
     slotName: 'production'
