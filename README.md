@@ -26,7 +26,7 @@
 
   Now that the ARM has been set up we can move on to setting up a worker agent. This is an optional step depending on how your Azure DevOps is set up. If you already have an agent you can safely ignore this step, otherwise follow along to install an agent onto one of your devices.
 
-  
+12. 
 
 ## Test Plan
 
