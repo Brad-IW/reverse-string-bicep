@@ -2,18 +2,23 @@ trigger: none
 #- main
 
 name: Deploy Bicep files
-
+parameters:
+  - name: azureServiceConnection
+    type: string
+    default: azureServiceConnection
+  - name: resourceGroupName
+    type: string
+    default: reversefunctionrg
+  - name: location
+    type: string
+    default: australiasoutheast
+  - name: appName
+    type: string
+    default: reversestring
 variables:
-  # Config
-  azureServiceConnection: 'azureServiceConnection'
-  resourceGroupName: 'reversefunctionrg'
-  location: 'australiasoutheast'
-  appName: 'reversestring'
-  # Variables
   templateFile: 'main.bicep'
   functionSolutionPath: '$(System.DefaultWorkingDirectory)/ReverseStringFunction'
 pool: 'My Devices'
-
 steps:
 # Build and prepare .NET
 - task: UseDotNet@2
@@ -47,27 +52,27 @@ steps:
 # Create Azure resources
 - task: AzureCLI@2
   inputs:
-    azureSubscription: $(azureServiceConnection)
+    azureSubscription: '${{ parameters.azureServiceConnection }}'
     scriptType: ps
     scriptLocation: inlineScript
     inlineScript: |
       az --version
-      $rgExists = az group exists --name $(resourceGroupName)
+      $rgExists = az group exists --name ${{ parameters.resourceGroupName }}
       if ($rgExists)
       {
-        az group delete --name $(resourceGroupName)
+        az group delete --name ${{ parameters.resourceGroupName }}
       }
-      az group create --name $(resourceGroupName) --location $(location)
-      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile)
+      az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }}
+      az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file $(templateFile)
 
 # Upload function
 - task: AzureFunctionApp@1
   inputs:
-    azureSubscription: '$(azureServiceConnection)'
+    azureSubscription: '${{ parameters.azureServiceConnection }}'
     appType: 'functionApp'
-    appName: '$(appname)'
+    appName: '${{ appname }}'
     deployToSlotOrASE: true
-    resourceGroupName: '$(resourceGroupName)'
+    resourceGroupName: '${{ parameters.resourceGroupName }}'
     slotName: 'production'
     package: '$(functionSolutionPath)/build/build.zip'
     deploymentMethod: 'auto'
