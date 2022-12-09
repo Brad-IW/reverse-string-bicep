@@ -70,7 +70,7 @@ steps:
   inputs:
     azureSubscription: '${{ parameters.azureServiceConnection }}'
     appType: 'functionApp'
-    appName: '${{ appname }}'
+    appName: '${{ appName }}'
     deployToSlotOrASE: true
     resourceGroupName: '${{ parameters.resourceGroupName }}'
     slotName: 'production'
