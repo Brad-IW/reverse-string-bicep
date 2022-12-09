@@ -8,6 +8,7 @@ variables:
   azureServiceConnection: 'azureServiceConnection'
   resourceGroupName: 'reversefunctionrg'
   location: 'australiasoutheast'
+  appName: 'reversestring'
   # Variables
   templateFile: 'main.bicep'
   functionSolutionPath: '$(System.DefaultWorkingDirectory)/ReverseStringFunction'
