@@ -4,10 +4,9 @@
 
 ## Installation Guide with DevOps
 
-1. Fork this repo or clone it into your own personal repo.
-
   To use the CI/CD provided as a part of this repo you will need to create your own repo from which Azure DevOps can pull from.
 
+1. Fork this repo or clone it into your own personal repo.
 2. Open Azure DevOps and click create a new project. 
 3. Give the project a name and press create.
 
@@ -38,7 +37,7 @@
 18. Choose the GitHub option.
 19. Find and select the repo you created which holds the forked or cloned project.
 
-    GitHub may request approval to install Azure Pipelines to GitHub, if they do make sure you accept the installation.
+    GitHub may request approval to install Azure Pipelines to GitHub, if they do make sure you press the aprove and install button.
 
 20. After selecting the repo Azure DevOps should take you to the review page. From here you can configure the parameters for the pipeline by replacing the values in the default property of each parameter.
   - azureServiceConnection: This should be set to the name you gave to the Azure service you set in step 10.
@@ -47,7 +46,7 @@
   - appName: This is the name which will be used as part of the url for the API. This must be unique and not already in use by another Azure user.
 21. Click save and run, then save and run again to commit these changes to your repo and to start the pipeline.
 
-  The pipeline may give a resource authorization error. If this happens click the Authorize Resources button and click Run New.
+  The pipeline may give a resource authorization error. If this happens click the Authorize Resources button and click Run New. 
 
   Once the pipeline has finished running the WebAPI will be available at `https://[appName].azurewebsites.net/api/ReverseString` 
 

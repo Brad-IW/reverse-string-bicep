@@ -63,7 +63,7 @@ steps:
         az group delete --name ${{ parameters.resourceGroupName }}
       }
       az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }}
-      az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file $(templateFile)
+      az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file $(templateFile) --parameters location='${{ parameters.location }}' --parameters appName='${{ parameters.appName }}' 
 
 # Upload function
 - task: AzureFunctionApp@1
