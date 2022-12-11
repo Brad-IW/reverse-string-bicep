@@ -1,6 +1,6 @@
 # Reverse String API
 
-[![Build Status](https://dev.azure.com/bradpodmore2001/String%20Reverse%20API/_apis/build/status/Brad-IW.reverse-string-bicep?branchName=main)](https://dev.azure.com/bradpodmore2001/String%20Reverse%20API/_build/latest?definitionId=2&branchName=main)
+[![Build Status](https://dev.azure.com/bradpodmore2001/String%20Reverse/_apis/build/status/Brad-IW.reverse-string-bicep?branchName=main)](https://dev.azure.com/bradpodmore2001/String%20Reverse/_build/latest?definitionId=6&branchName=main)
 
 ## Installation Guide with DevOps
 
