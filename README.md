@@ -43,7 +43,7 @@
   - azureServiceConnection: This should be set to the name you gave to the Azure service you set in step 10.
   - resourceGroupName: This is the name of the resource group that the pipeline will create. This can be left as the default value but make sure you don't already have a resource group with the same name as it will be deleted.
   - location: This is the physical location that the Azure resources will be created in. 
-  - appName: This is the name which will be used as part of the url for the API. This must be unique and not already in use by another Azure user.
+  - appName: This is the name which will be used as part of the url for the API. This must be unique and not already in use by another Azure user. Note that the appName has to 13 characters or less in length.
 21. Click save and run, then save and run again to commit these changes to your repo and to start the pipeline.
 
   The pipeline may give a resource authorization error. If this happens click the Authorize Resources button and click Run New. 
@@ -52,3 +52,12 @@
 
 
 ## Test Plan
+
+This optional test plan will walk you through the process of setting up the postman requests.
+
+1. Open your Postman workspace.
+2. Click import and select the provided `ReverseString.postman_collection.json` file.
+3. Ensure the selection and get request are checked, then press import.
+4. Open the environment editor and add a new environment.
+5. Add a new key value pair with `server` as the key and `[appName].azuarewebsites.net` (where \[appName\] is the app name set during the pipeline parameter configuration) as the value.
+6. Click on the Get Reverse String request and hit send. This should return the word message backwards as a responses. (egassem) 

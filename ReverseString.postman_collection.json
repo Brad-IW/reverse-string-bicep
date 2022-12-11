@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "e9b27fb4-f394-43b8-8518-f230e6e12eb9",
+		"name": "ReverseString",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24663713"
+	},
+	"item": [
+		{
+			"name": "Get Reverse String",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{server}}/api/ReverseString?text=message",
+					"protocol": "https",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"ReverseString"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "message"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Reverse String Example Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{server}}/api/ReverseString?text=message",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"ReverseString"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "message"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Dec 2022 21:45:38 GMT"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Request-Context",
+							"value": "appId=cid-v1:e81cef6e-5a7c-4afd-abc1-14e7df0b9351"
+						}
+					],
+					"cookie": [],
+					"body": "egassem"
+				}
+			]
+		}
+	]
+}
